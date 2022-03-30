@@ -1,10 +1,11 @@
+<nav>
+  <a [routerLink]="['dashboard']">dashboard</a>&nbsp;
+  <a [routerLink]="['member']">member</a>
+</nav>
 {{ rootStore.currentPage$ | async }}/{{ rootStore.page$ | async }}
 <button (click)="loadDitto()">load ditto</button>
 
 {{ rootStore.ditto$ | async | json }}
 <button (click)="rootStore.resetPokemonState()">reset</button>
-
-<a [routerLink]="['./dashboard']">dashboard</a>
-<a [routerLink]="['member']">member</a>
 
 <router-outlet></router-outlet>

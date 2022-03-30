@@ -1,10 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [{ path: 'member', loadChildren: () => import('./member/member.module').then(m => m.MemberModule) }, { path: 'dashbord', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) }];
+const routes: Routes = [
+  {
+    path: 'member',
+    loadChildren: () =>
+      import('./member/member.module').then((m) => m.MemberModule),
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
