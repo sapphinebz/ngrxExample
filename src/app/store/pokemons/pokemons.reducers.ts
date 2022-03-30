@@ -4,18 +4,24 @@ import {
   paginationChangeAction,
   loadPokemonSuccessAction,
   loadPokemonDittoSuccessAction,
+  resetState,
 } from './pokemons.actions';
 
+const initState: PokemonState = {
+  limit: 10,
+  offset: 0,
+  page: null,
+  currentPage: null,
+  count: 0,
+  pokemons: [],
+  ditto: null,
+};
+
 export const pokemonsReducer = createReducer<PokemonState>(
-  {
-    limit: 10,
-    offset: 0,
-    page: null,
-    currentPage: null,
-    count: 0,
-    pokemons: [],
-    ditto: null,
-  },
+  initState,
+  on(resetState, (_, __) => {
+    return { ...initState };
+  }),
   on(loadPokemonDittoSuccessAction, (state, action) => {
     return { ...state, ditto: action.ditto };
   }),

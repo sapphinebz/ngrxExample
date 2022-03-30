@@ -58,21 +58,23 @@ export class RootStore {
     this.effectLoadPokemonDitto();
   }
 
+  resetPokemonState() {
+    this.store.dispatch(PokemonAction.resetState());
+  }
+
   private effectLoadPokemonDitto() {
     this.actions$
       .pipe(
         ofType(PokemonAction.loadPokemonDittoAction),
         switchMap(() => {
-          return this.http
-            .get('https://pokeapi.co/api/v2/pokemongfg/ditto')
-            .pipe(
-              catchError((err) => {
-                this.store.dispatch(
-                  PokemonAction.loadPokemonDittoErrorAction({ error: err })
-                );
-                return EMPTY;
-              })
-            );
+          return this.http.get('https://pokeapi.co/api/v2/pokemon/ditto').pipe(
+            catchError((err) => {
+              this.store.dispatch(
+                PokemonAction.loadPokemonDittoErrorAction({ error: err })
+              );
+              return EMPTY;
+            })
+          );
         })
       )
       .subscribe((response) => {

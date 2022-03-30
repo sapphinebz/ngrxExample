@@ -2,3 +2,4 @@
 <button (click)="loadDitto()">load ditto</button>
 
 {{ rootStore.ditto$ | async | json }}
+<button (click)="rootStore.resetPokemonState()">reset</button>

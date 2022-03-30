@@ -26,3 +26,5 @@ export const loadPokemonDittoErrorAction = createAction(
   '[POKEMON] load Pokemon Ditto Error',
   props<{ error: any }>()
 );
+
+export const resetState = createAction('[POKEMON] reset state');
