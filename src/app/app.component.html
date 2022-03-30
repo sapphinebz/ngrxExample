@@ -3,3 +3,8 @@
 
 {{ rootStore.ditto$ | async | json }}
 <button (click)="rootStore.resetPokemonState()">reset</button>
+
+<a [routerLink]="['./dashboard']">dashboard</a>
+<a [routerLink]="['member']">member</a>
+
+<router-outlet></router-outlet>
